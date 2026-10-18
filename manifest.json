@@ -1,0 +1,16 @@
+{
+  "name": "TKGM Uygulamalar",
+  "short_name": "TKGM Uygulamalar",
+  "description": "TKGM sistemlerine ve programlara hızlı erişim",
+  "lang": "tr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1020",
+  "theme_color": "#4f46e5",
+  "icons": [
+    { "src": "simge-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "simge-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "simge-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

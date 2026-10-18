@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TKGM Uygulamalar</title>
+<link rel="icon" href="favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4f46e5">
+<style>
+    :root {
+        --bg-1: #0b1020;
+        --bg-2: #111a33;
+        --kart: rgba(255, 255, 255, 0.06);
+        --kart-kenar: rgba(255, 255, 255, 0.10);
+        --kart-hover: rgba(255, 255, 255, 0.11);
+        --yazi: #f1f5f9;
+        --yazi-2: #94a3b8;
+        --vurgu: #6366f1;
+    }
+    @media (prefers-color-scheme: light) {
+        :root {
+            --bg-1: #eef2ff;
+            --bg-2: #f8fafc;
+            --kart: rgba(255, 255, 255, 0.75);
+            --kart-kenar: rgba(15, 23, 42, 0.08);
+            --kart-hover: #ffffff;
+            --yazi: #0f172a;
+            --yazi-2: #475569;
+        }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        color: var(--yazi);
+        background: radial-gradient(1200px 600px at 10% -10%, rgba(99,102,241,.35), transparent 60%),
+                    radial-gradient(900px 500px at 110% 110%, rgba(14,165,233,.28), transparent 60%),
+                    linear-gradient(160deg, var(--bg-1), var(--bg-2));
+        overflow: hidden;
+        user-select: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Arka planda yavaşça dolaşan ışık lekeleri */
+    .isik { position: fixed; border-radius: 50%; filter: blur(70px); opacity: .45; z-index: -1; animation: suzul 18s ease-in-out infinite alternate; }
+    .isik.a { width: 340px; height: 340px; background: #6366f1; top: -80px; left: -60px; }
+    .isik.b { width: 300px; height: 300px; background: #06b6d4; bottom: -90px; right: -40px; animation-delay: -6s; }
+    .isik.c { width: 220px; height: 220px; background: #a855f7; top: 40%; left: 55%; animation-delay: -12s; opacity: .25; }
+    @keyframes suzul { to { transform: translate(60px, 40px) scale(1.15); } }
+
+    header {
+        display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        padding: 22px 28px 10px;
+        animation: yukari .6s ease both;
+    }
+    .baslik { display: flex; align-items: center; gap: 12px; }
+    .logo {
+        width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+        background: linear-gradient(135deg, #6366f1, #0ea5e9); box-shadow: 0 8px 24px rgba(99,102,241,.45);
+    }
+    .logo svg { width: 22px; height: 22px; color: #fff; }
+    h1 { font-size: 20px; font-weight: 700; letter-spacing: .2px; }
+    #selam { font-size: 13px; color: var(--yazi-2); }
+    .saat { text-align: right; }
+    #saat { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    #tarih { font-size: 12px; color: var(--yazi-2); }
+
+    .arama {
+        margin: 6px 28px 4px; position: relative;
+        animation: yukari .6s .08s ease both;
+    }
+    .arama input {
+        width: 100%; padding: 11px 14px 11px 40px; border-radius: 12px; font: inherit; font-size: 14px;
+        color: var(--yazi); background: var(--kart); border: 1px solid var(--kart-kenar); outline: none;
+        transition: border-color .2s, box-shadow .2s;
+    }
+    .arama input:focus { border-color: var(--vurgu); box-shadow: 0 0 0 3px rgba(99,102,241,.25); }
+    .arama svg { position: absolute; left: 13px; top: 50%; width: 17px; height: 17px; transform: translateY(-50%); color: var(--yazi-2); }
+
+    main {
+        flex: 1; overflow-y: auto; padding: 14px 28px 18px;
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 14px; align-content: start;
+    }
+
+    .kart {
+        position: relative; overflow: hidden; text-decoration: none; color: inherit;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+        padding: 20px 12px 16px; border-radius: 18px; min-height: 140px;
+        background: var(--kart); border: 1px solid var(--kart-kenar);
+        backdrop-filter: blur(12px);
+        transform-style: preserve-3d;
+        transition: transform .25s cubic-bezier(.2,.8,.2,1), background-color .25s, box-shadow .25s, border-color .25s, opacity .25s;
+        opacity: 0; animation: belir .55s cubic-bezier(.2,.8,.2,1) forwards;
+        outline: none;
+    }
+    .kart:hover, .kart:focus-visible {
+        background: var(--kart-hover);
+        border-color: color-mix(in srgb, var(--renk) 60%, transparent);
+        box-shadow: 0 14px 34px -10px color-mix(in srgb, var(--renk) 70%, transparent);
+    }
+    .kart:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, var(--renk) 60%, transparent); }
+    .kart .ikon {
+        width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center;
+        background: var(--renk); color: #fff;
+        box-shadow: 0 8px 20px -6px var(--renk);
+        transition: transform .3s cubic-bezier(.2,.8,.2,1);
+        transform: translateZ(30px);
+    }
+    .kart:hover .ikon { transform: translateZ(30px) scale(1.1) rotate(-4deg); }
+    .kart .ikon svg { width: 26px; height: 26px; }
+    .kart .ad { font-weight: 600; font-size: 15px; transform: translateZ(20px); }
+    .kart .aciklama { font-size: 12px; color: var(--yazi-2); margin-top: -6px; transform: translateZ(10px); }
+    .kart .kisayol {
+        position: absolute; top: 9px; right: 11px; font-size: 11px; font-weight: 600; color: var(--yazi-2);
+        border: 1px solid var(--kart-kenar); border-radius: 6px; padding: 1px 6px; opacity: .7;
+    }
+    .kart .parilti {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .25s;
+        background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--renk) 30%, transparent), transparent 60%);
+    }
+    .kart:hover .parilti { opacity: 1; }
+    .kart.gizli { display: none; }
+
+    /* Programlar kartı */
+    .kart.programlar { --renk: #6366f1; border-style: dashed; }
+    .kart.programlar .ikon { background: linear-gradient(135deg, #6366f1, #0ea5e9); }
+    .kart .rozet {
+        position: absolute; top: 9px; left: 11px; font-size: 11px; font-weight: 700; color: #fff;
+        background: var(--renk); border-radius: 999px; padding: 1px 8px; display: none;
+    }
+
+    /* Uygulama olarak yükle düğmesi */
+    .yukle {
+        display: none; align-items: center; gap: 7px; margin-right: 18px; padding: 8px 14px; border-radius: 10px;
+        font: inherit; font-size: 13px; font-weight: 600; color: #fff; cursor: pointer; border: 0;
+        background: linear-gradient(135deg, #6366f1, #0ea5e9); box-shadow: 0 6px 18px -6px rgba(99,102,241,.8);
+        transition: transform .2s;
+    }
+    .yukle:hover { transform: translateY(-2px); }
+    .yukle svg { width: 16px; height: 16px; }
+    .sag { display: flex; align-items: center; }
+
+    /* Programlar paneli */
+    .perde {
+        position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 24px;
+        background: rgba(2, 6, 23, .55); backdrop-filter: blur(6px);
+        opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    .perde.acik { opacity: 1; pointer-events: auto; }
+    .panel {
+        width: min(640px, 100%); max-height: min(560px, 100%); display: flex; flex-direction: column;
+        border-radius: 20px; border: 1px solid var(--kart-kenar); overflow: hidden;
+        background: linear-gradient(160deg, var(--bg-1), var(--bg-2));
+        box-shadow: 0 30px 80px -20px rgba(0,0,0,.6);
+        transform: translateY(20px) scale(.97); transition: transform .3s cubic-bezier(.2,.8,.2,1);
+    }
+    .perde.acik .panel { transform: none; }
+    .panel-ust { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 12px; border-bottom: 1px solid var(--kart-kenar); }
+    .panel-ust h2 { font-size: 18px; }
+    .panel-ust p { font-size: 12px; color: var(--yazi-2); margin-top: 2px; }
+    .kapat { background: none; border: 0; color: var(--yazi-2); font-size: 26px; line-height: 1; cursor: pointer; padding: 4px 8px; border-radius: 8px; }
+    .kapat:hover { color: var(--yazi); background: var(--kart); }
+    .program-liste { overflow-y: auto; padding: 12px 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+    .program {
+        display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 14px;
+        background: var(--kart); border: 1px solid var(--kart-kenar);
+        opacity: 0; animation: belir .45s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+    .program .tur {
+        width: 40px; height: 40px; flex: none; border-radius: 11px; display: grid; place-items: center;
+        font-size: 10.5px; font-weight: 800; color: #fff; letter-spacing: .3px; background: var(--renk, #64748b);
+    }
+    .program .bilgi { flex: 1; min-width: 0; }
+    .program .dosya { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .program .boyut { font-size: 12px; color: var(--yazi-2); }
+    .indir {
+        display: inline-flex; align-items: center; gap: 6px; padding: 8px 13px; border-radius: 10px; text-decoration: none;
+        font-size: 13px; font-weight: 600; color: #fff; background: var(--vurgu); transition: transform .2s, filter .2s; flex: none;
+    }
+    .indir:hover, .indir:focus-visible { transform: translateY(-1px); filter: brightness(1.12); outline: none; }
+    .indir svg { width: 15px; height: 15px; }
+    .durum { text-align: center; color: var(--yazi-2); font-size: 13.5px; padding: 28px 10px; line-height: 1.6; }
+    .durum a { color: var(--vurgu); }
+
+    /* Tıklama dalgası ve açılış efekti */
+    .dalga { position: absolute; border-radius: 50%; transform: scale(0); background: color-mix(in srgb, var(--renk) 45%, transparent); animation: dalga .65s ease-out forwards; pointer-events: none; }
+    @keyframes dalga { to { transform: scale(4); opacity: 0; } }
+    .kart.aciliyor { animation: nabiz .5s ease; }
+    @keyframes nabiz { 40% { transform: scale(.94); } 100% { transform: scale(1); } }
+
+    @keyframes belir { from { opacity: 0; transform: translateY(18px) scale(.96); } to { opacity: 1; transform: none; } }
+    @keyframes yukari { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+
+    .bos { grid-column: 1 / -1; text-align: center; color: var(--yazi-2); padding: 30px 0; display: none; }
+
+    footer { padding: 8px 28px 14px; font-size: 11.5px; color: var(--yazi-2); display: flex; justify-content: space-between; }
+
+    .bildirim {
+        position: fixed; left: 50%; bottom: 22px; transform: translate(-50%, 30px); opacity: 0;
+        padding: 10px 18px; border-radius: 12px; font-size: 13.5px; font-weight: 500;
+        background: rgba(15, 23, 42, .92); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+        border: 1px solid rgba(255, 255, 255, .14);
+        transition: transform .3s cubic-bezier(.2,.8,.2,1), opacity .3s; pointer-events: none;
+        display: flex; align-items: center; gap: 9px;
+    }
+    .bildirim.goster { transform: translate(-50%, 0); opacity: 1; }
+    .bildirim .nokta { width: 8px; height: 8px; border-radius: 50%; background: var(--renk, #22c55e); box-shadow: 0 0 10px var(--renk, #22c55e); }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-thumb { background: rgba(148,163,184,.35); border-radius: 8px; }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; }
+    }
+</style>
+</head>
+<body>
+<div class="isik a"></div><div class="isik b"></div><div class="isik c"></div>
+
+<header>
+    <div class="baslik">
+        <div class="logo"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg></div>
+        <div>
+            <h1>TKGM Uygulamalar</h1>
+            <div id="selam">Hoş geldiniz</div>
+        </div>
+    </div>
+    <div class="sag">
+        <button class="yukle" id="yukle" title="Masaüstü uygulaması olarak yükle"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>Uygulama olarak yükle</button>
+        <div class="saat"><div id="saat">--:--</div><div id="tarih"></div></div>
+    </div>
+</header>
+
+<div class="arama">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"/></svg>
+    <input id="ara" type="search" placeholder="Ara... (yazmaya başlayın, Enter ile açın)" autocomplete="off">
+</div>
+
+<main id="liste"><div class="bos" id="bos">Eşleşen sistem yok</div></main>
+
+<footer><span>Kısayol: 1–9, 0 · Ok tuşları + Enter</span><span>© Gökhan ELGÜL</span></footer>
+
+<div class="perde" id="perde" aria-hidden="true">
+    <div class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-baslik">
+        <div class="panel-ust">
+            <div><h2 id="panel-baslik">Programlar</h2><p>GitHub'daki "programlar" klasöründen otomatik listelenir</p></div>
+            <button class="kapat" id="kapat" aria-label="Kapat">&times;</button>
+        </div>
+        <div class="program-liste" id="program-liste"></div>
+    </div>
+</div>
+
+<div class="bildirim" id="bildirim"><span class="nokta"></span><span id="bildirim-yazi"></span></div>
+
+<script>
+// =====================================================================
+// SİSTEM LİSTESİ — eklemek/çıkarmak için bu listeyi düzenleyin.
+//   renk: kartın simge rengi (CSS rengi)  ·  simge: aşağıdaki SIMGELER'den bir ad
+// =====================================================================
+const SISTEMLER = [
+    { ad: 'EBYS',         aciklama: 'Elektronik Belge', url: 'https://ebys.tkgm.gov.tr/edys-web/sistemeGiris.xhtml', renk: '#64748b', simge: 'belge' },
+    { ad: 'BULUT',        aciklama: 'TKGM Bulut',       url: 'https://bulut.tkgm.gov.tr/',                           renk: '#06b6d4', simge: 'bulut' },
+    { ad: 'CBS',          aciklama: 'Coğrafi Bilgi',    url: 'https://cbs.tkgm.gov.tr/login.aspx',                   renk: '#22c55e', simge: 'kure' },
+    { ad: 'TKGM',         aciklama: 'Kurumsal Site',    url: 'https://www.tkgm.gov.tr/',                             renk: '#3b82f6', simge: 'kurum' },
+    { ad: 'YBS',          aciklama: 'Yönetim Bilgi',    url: 'https://ybs.tkgm.gov.tr/',                             renk: '#eab308', simge: 'pasta' },
+    { ad: 'YTS',          aciklama: 'Yatırım Takip',    url: 'https://yts.tkgm.gov.tr/',                             renk: '#ef4444', simge: 'trend' },
+    { ad: 'Web-Mail',     aciklama: 'E-Posta',          url: 'https://webposta.tkgm.gov.tr/owa/',                    renk: '#f97316', simge: 'posta' },
+    { ad: 'Parsel Sorgu', aciklama: 'Sorgulama',        url: 'https://parselsorgu.tkgm.gov.tr/',                     renk: '#84cc16', simge: 'konum' },
+    { ad: 'TK Mevzuat',   aciklama: 'Mevzuat',          url: 'https://gokhangeo.github.io/tkmevzuat/',               renk: '#a855f7', simge: 'kitap' },
+    { ad: 'WhatsApp',     aciklama: 'Web',              url: 'https://web.whatsapp.com/',                            renk: '#22c55e', simge: 'whatsapp' },
+];
+
+const SIMGELER = {
+    belge:    'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+    bulut:    'M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z',
+    kure:     'M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9',
+    kurum:    'M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z',
+    pasta:    'M11 3.055A9.001 9.001 0 1020.945 13H11V3.055zM20.488 9H15V3.512A9.025 9.025 0 0120.488 9z',
+    trend:    'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
+    posta:    'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+    konum:    'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z',
+    kitap:    'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+    whatsapp: { dolu: true, d: 'M16.75 13.96c.25.13.42.2.46.3.04.1.04.62-.12 1.3.1.02-.38.13-.78.13-.4 0-1.04-.1-1.6-.33-.56-.23-1.1-.56-1.54-.9-.44-.34-.8-.75-1.1-1.22-.3-.47-.54-.98-.7-1.5-.15-.52-.22-1.04-.22-1.56 0-.52.06-1.04.18-1.56.12-.52.32-1.03.6-1.5.28-.48.62-.9.98-1.25.38-.36.78-.64 1.2-.82.42-.18.85-.28 1.3-.28.45 0 .9.1 1.32.28.42.18.8.44 1.12.8.32.34.58.76.76 1.22.18.48.28.98.28 1.5 0 .52-.1.98-.28 1.44-.18.46-.44.86-.76 1.2ZM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.2.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.6 6 1.6h.2c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.2-3.6-8.6Zm-8.4 16.7c-2 0-3.8-.6-5.4-1.6L4 19.8l1.4-2.6c-1-1.6-1.6-3.6-1.6-5.6C3.8 6.8 7.4 3 12 3c2.2 0 4.2.8 5.8 2.4 1.6 1.6 2.4 3.6 2.4 5.8.2 4.6-3.4 8.4-8.2 8.4Z' },
+};
+
+const svg = (ad) => {
+    const s = SIMGELER[ad] || SIMGELER.belge;
+    return typeof s === 'object'
+        ? `<svg fill="currentColor" viewBox="0 0 24 24"><path d="${s.d}"/></svg>`
+        : `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${s}"/></svg>`;
+};
+
+// =====================================================================
+// PROGRAMLAR — GitHub'da "programlar" klasörüne yüklenen dosyalar burada listelenir.
+// Klasöre dosya eklemek/silmek yeterlidir; bu sayfayı değiştirmeye gerek yoktur.
+// =====================================================================
+const GITHUB = { sahip: 'gokhangeo', depo: 'gokhangeo.github.io', klasor: 'programlar', dal: 'main' };
+const PROGRAM_ADRESI = new URL(`${GITHUB.klasor}/`, location.href.replace(/[^/]*$/, ''));
+
+const liste = document.getElementById('liste');
+const bos = document.getElementById('bos');
+const ara = document.getElementById('ara');
+
+function kartEkle(s, i, tus) {
+    const a = document.createElement('a');
+    a.className = 'kart' + (s.programlar ? ' programlar' : '');
+    a.href = s.url;
+    if (!s.programlar) { a.target = '_blank'; a.rel = 'noopener'; a.title = s.url; }
+    a.style.setProperty('--renk', s.renk);
+    a.style.animationDelay = `${120 + i * 55}ms`;
+    a.dataset.ara = `${s.ad} ${s.aciklama} ${s.programlar ? 'indir program' : ''}`.toLocaleLowerCase('tr-TR');
+    a.innerHTML = `<span class="parilti"></span>${tus ? `<span class="kisayol">${tus}</span>` : ''}${s.programlar ? '<span class="rozet" id="program-sayisi"></span>' : ''}
+        <span class="ikon">${svg(s.simge)}</span><span class="ad">${s.ad}</span><span class="aciklama">${s.aciklama}</span>`;
+
+    // Fareyle 3B eğilme ve ışık takibi
+    a.addEventListener('mousemove', (e) => {
+        const r = a.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        a.style.setProperty('--mx', `${x * 100}%`);
+        a.style.setProperty('--my', `${y * 100}%`);
+        a.style.transform = `perspective(600px) rotateX(${(0.5 - y) * 10}deg) rotateY(${(x - 0.5) * 12}deg) translateY(-3px)`;
+    });
+    a.addEventListener('mouseleave', () => { a.style.transform = ''; });
+
+    a.addEventListener('click', (e) => {
+        if (s.programlar) { e.preventDefault(); a.style.transform = ''; panelAc(); return; }
+        efekt(a, s, e);
+    });
+    a.addEventListener('animationend', (e) => { if (e.animationName === 'belir') { a.style.opacity = 1; a.style.animation = 'none'; } });
+    liste.insertBefore(a, bos);
+    return a;
+}
+
+SISTEMLER.forEach((s, i) => kartEkle(s, i, i < 9 ? String(i + 1) : i === 9 ? '0' : ''));
+const siteKartlari = [...liste.querySelectorAll('.kart')];
+SIMGELER.indir = 'M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4';
+const programKarti = kartEkle({ ad: 'Programlar', aciklama: 'İndirilebilir dosyalar', url: '#programlar', renk: '#6366f1', simge: 'indir', programlar: true }, SISTEMLER.length, '');
+
+const kartlar = [...siteKartlari, programKarti];
+const gorunenler = () => kartlar.filter(k => !k.classList.contains('gizli'));
+
+function efekt(kart, s, e) {
+    const r = kart.getBoundingClientRect();
+    const d = document.createElement('span');
+    const boyut = Math.max(r.width, r.height);
+    d.className = 'dalga';
+    d.style.width = d.style.height = `${boyut}px`;
+    const x = e && e.clientX ? e.clientX - r.left : r.width / 2;
+    const y = e && e.clientY ? e.clientY - r.top : r.height / 2;
+    d.style.left = `${x - boyut / 2}px`;
+    d.style.top = `${y - boyut / 2}px`;
+    kart.appendChild(d);
+    setTimeout(() => d.remove(), 700);
+    kart.classList.remove('aciliyor'); void kart.offsetWidth; kart.classList.add('aciliyor');
+    bildir(`${s.ad} açılıyor…`, s.renk);
+}
+
+function ac(kart) {
+    if (kart === programKarti) { panelAc(); return; }
+    const s = SISTEMLER[siteKartlari.indexOf(kart)];
+    efekt(kart, s);
+    window.open(s.url, '_blank', 'noopener');
+}
+
+let bildirimZamani;
+function bildir(metin, renk) {
+    const b = document.getElementById('bildirim');
+    document.getElementById('bildirim-yazi').textContent = metin;
+    b.style.setProperty('--renk', renk);
+    b.classList.add('goster');
+    clearTimeout(bildirimZamani);
+    bildirimZamani = setTimeout(() => b.classList.remove('goster'), 1800);
+}
+
+// ---------- Programlar paneli ----------
+const perde = document.getElementById('perde');
+const programListe = document.getElementById('program-liste');
+const kacis = (v = '') => String(v).replace(/[&<>'"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[ch]));
+
+const TUR_RENGI = { exe: '#ef4444', msi: '#ef4444', zip: '#f59e0b', rar: '#f59e0b', '7z': '#f59e0b', pdf: '#dc2626', doc: '#2563eb', docx: '#2563eb', xls: '#16a34a', xlsx: '#16a34a', ppt: '#ea580c', pptx: '#ea580c', apk: '#22c55e', txt: '#64748b' };
+const boyutYaz = (b) => b >= 1048576 ? `${(b / 1048576).toFixed(1).replace('.', ',')} MB` : b >= 1024 ? `${Math.round(b / 1024)} KB` : `${b} B`;
+
+async function programlariGetir() {
+    const api = `https://api.github.com/repos/${GITHUB.sahip}/${GITHUB.depo}/contents/${GITHUB.klasor}?ref=${GITHUB.dal}`;
+    const anahtar = 'tkgm-programlar';
+    try {
+        const res = await fetch(api, { headers: { Accept: 'application/vnd.github+json' } });
+        if (!res.ok) throw new Error(res.status);
+        const veri = (await res.json())
+            .filter(f => f.type === 'file' && !/^(readme\.md|\.gitkeep)$/i.test(f.name))
+            .map(f => ({ ad: f.name, boyut: f.size }))
+            .sort((a, b) => a.ad.localeCompare(b.ad, 'tr'));
+        try { localStorage.setItem(anahtar, JSON.stringify(veri)); } catch (e) {}
+        return veri;
+    } catch (e) {
+        // GitHub'a ulaşılamazsa (veya saatlik sorgu sınırı dolarsa) son bilinen liste kullanılır
+        try { const eski = JSON.parse(localStorage.getItem(anahtar)); if (Array.isArray(eski)) return eski; } catch (_) {}
+        throw e;
+    }
+}
+
+function programlariCiz(veri) {
+    const rozet = document.getElementById('program-sayisi');
+    rozet.textContent = veri.length;
+    rozet.style.display = veri.length ? 'block' : 'none';
+    if (!veri.length) {
+        programListe.innerHTML = `<div class="durum">Henüz program yok.<br>GitHub'da <b>${GITHUB.klasor}</b> klasörüne dosya yükleyin, burada otomatik görünür.</div>`;
+        return;
+    }
+    programListe.innerHTML = veri.map((p, i) => {
+        const uzanti = (p.ad.includes('.') ? p.ad.split('.').pop() : '').toLowerCase();
+        const adres = new URL(encodeURIComponent(p.ad), PROGRAM_ADRESI).href;
+        return `<div class="program" style="animation-delay:${60 + i * 45}ms">
+            <span class="tur" style="--renk:${TUR_RENGI[uzanti] || '#64748b'}">${kacis(uzanti.toUpperCase().slice(0, 4) || 'DOSYA')}</span>
+            <span class="bilgi"><div class="dosya" title="${kacis(p.ad)}">${kacis(p.ad)}</div><div class="boyut">${boyutYaz(p.boyut)}</div></span>
+            <a class="indir" href="${kacis(adres)}" download="${kacis(p.ad)}"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${SIMGELER.indir}"/></svg>İndir</a>
+        </div>`;
+    }).join('');
+}
+
+async function programlariYukle() {
+    programListe.innerHTML = '<div class="durum">Programlar yükleniyor…</div>';
+    try {
+        programlariCiz(await programlariGetir());
+    } catch (e) {
+        programListe.innerHTML = `<div class="durum">Program listesi şu an alınamadı.<br><a href="https://github.com/${GITHUB.sahip}/${GITHUB.depo}/tree/${GITHUB.dal}/${GITHUB.klasor}" target="_blank" rel="noopener">Klasörü GitHub'da aç</a></div>`;
+    }
+}
+
+let sonOdak = null;
+function panelAc() {
+    sonOdak = document.activeElement;
+    perde.classList.add('acik');
+    perde.setAttribute('aria-hidden', 'false');
+    programlariYukle().then(() => (programListe.querySelector('.indir') || document.getElementById('kapat')).focus());
+}
+function panelKapat() {
+    perde.classList.remove('acik');
+    perde.setAttribute('aria-hidden', 'true');
+    (sonOdak && sonOdak !== document.body ? sonOdak : programKarti).focus();
+}
+document.getElementById('kapat').addEventListener('click', panelKapat);
+perde.addEventListener('click', (e) => { if (e.target === perde) panelKapat(); });
+programListe.addEventListener('click', (e) => {
+    const a = e.target.closest('.indir');
+    if (a) bildir(`${a.getAttribute('download')} indiriliyor…`, '#6366f1');
+});
+
+// Arama
+ara.addEventListener('input', () => {
+    const q = ara.value.toLocaleLowerCase('tr-TR').trim();
+    kartlar.forEach(k => k.classList.toggle('gizli', !k.dataset.ara.includes(q)));
+    bos.style.display = gorunenler().length ? 'none' : 'block';
+});
+
+// Klavye: rakamlar, ok tuşları, Enter, Esc
+document.addEventListener('keydown', (e) => {
+    if (perde.classList.contains('acik')) {
+        if (e.key === 'Escape') panelKapat();
+        return;
+    }
+    const aktif = document.activeElement;
+    if (aktif === ara) {
+        if (e.key === 'Enter') { const g = gorunenler(); if (g.length) ac(g[0]); }
+        else if (e.key === 'ArrowDown') { e.preventDefault(); gorunenler()[0]?.focus(); }
+        else if (e.key === 'Escape') { ara.value = ''; ara.dispatchEvent(new Event('input')); }
+        return;
+    }
+    if (/^[0-9]$/.test(e.key) && !e.ctrlKey && !e.altKey) {
+        const i = e.key === '0' ? 9 : Number(e.key) - 1;
+        if (siteKartlari[i]) { e.preventDefault(); ac(siteKartlari[i]); }
+        return;
+    }
+    const g = gorunenler();
+    const i = g.indexOf(aktif);
+    if (['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(e.key)) {
+        e.preventDefault();
+        if (i === -1) { g[0]?.focus(); return; }
+        const sutunSayisi = getComputedStyle(liste).gridTemplateColumns.split(' ').length;
+        const adim = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: sutunSayisi, ArrowUp: -sutunSayisi }[e.key];
+        const yeni = i + adim;
+        if (yeni < 0 && e.key === 'ArrowUp') { ara.focus(); return; }
+        g[Math.min(Math.max(yeni, 0), g.length - 1)].focus();
+        return;
+    }
+    if (e.key === 'Enter' && aktif === programKarti) { e.preventDefault(); panelAc(); return; }
+    if (e.key === 'Escape') { ara.focus(); return; }
+    // Harf yazılınca aramaya geç
+    if (e.key.length === 1 && !e.ctrlKey && !e.altKey && !e.metaKey && e.key !== ' ') {
+        ara.focus();
+    }
+});
+
+// Saat ve karşılama
+function saatGuncelle() {
+    const now = new Date();
+    document.getElementById('saat').textContent = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('tarih').textContent = now.toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    const h = now.getHours();
+    document.getElementById('selam').textContent = `${h < 12 ? 'Günaydın' : h < 18 ? 'İyi günler' : 'İyi akşamlar'}`;
+}
+saatGuncelle();
+setInterval(saatGuncelle, 15000);
+
+// Program sayısı rozeti için listeyi arka planda bir kez çek
+programlariGetir().then(programlariCiz).catch(() => {});
+
+// Masaüstü uygulaması olarak yükleme (Edge/Chrome) ve çevrimdışı önbellek
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+let yuklemeIstegi = null;
+const yukleDugmesi = document.getElementById('yukle');
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    yuklemeIstegi = e;
+    yukleDugmesi.style.display = 'inline-flex';
+});
+yukleDugmesi.addEventListener('click', async () => {
+    if (!yuklemeIstegi) return;
+    yuklemeIstegi.prompt();
+    await yuklemeIstegi.userChoice;
+    yuklemeIstegi = null;
+    yukleDugmesi.style.display = 'none';
+});
+window.addEventListener('appinstalled', () => { yukleDugmesi.style.display = 'none'; bildir('Uygulama yüklendi', '#22c55e'); });
+</script>
+</body>
+</html>
