@@ -246,7 +246,7 @@
 <div class="perde" id="perde" aria-hidden="true">
     <div class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-baslik">
         <div class="panel-ust">
-            <div><h2 id="panel-baslik">Programlar</h2><p>GitHub'daki "programlar" klasöründen otomatik listelenir</p></div>
+            <div><h2 id="panel-baslik">Programlar</h2><p>İndirilebilir dosyalar</p></div>
             <button class="kapat" id="kapat" aria-label="Kapat">&times;</button>
         </div>
         <div class="program-liste" id="program-liste"></div>
@@ -411,7 +411,7 @@ function programlariCiz(veri) {
     rozet.textContent = veri.length;
     rozet.style.display = veri.length ? 'block' : 'none';
     if (!veri.length) {
-        programListe.innerHTML = `<div class="durum">Henüz program yok.<br>GitHub'da <b>${GITHUB.klasor}</b> klasörüne dosya yükleyin, burada otomatik görünür.</div>`;
+        programListe.innerHTML = `<div class="durum">Henüz program yok.</div>`;
         return;
     }
     programListe.innerHTML = veri.map((p, i) => {
@@ -430,7 +430,7 @@ async function programlariYukle() {
     try {
         programlariCiz(await programlariGetir());
     } catch (e) {
-        programListe.innerHTML = `<div class="durum">Program listesi şu an alınamadı.<br><a href="https://github.com/${GITHUB.sahip}/${GITHUB.depo}/tree/${GITHUB.dal}/${GITHUB.klasor}" target="_blank" rel="noopener">Klasörü GitHub'da aç</a></div>`;
+        programListe.innerHTML = `<div class="durum">Program listesi şu an alınamadı.<br>Lütfen daha sonra tekrar deneyin.</div>`;
     }
 }
 
