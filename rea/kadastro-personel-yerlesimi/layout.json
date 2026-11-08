@@ -293,13 +293,13 @@
       "name": "Barış Yaylagül",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 792.75,
-      "y": 211.5,
+      "x": 1141.25,
+      "y": 148.75,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-41"
+      "seatId": "orig-30"
     },
     {
       "id": "97bab587-5d4c-4f58-93ef-eb3b29a0ba92",
@@ -319,13 +319,13 @@
       "name": "Hasan İn",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 1141.25,
-      "y": 148.75,
+      "x": 792.75,
+      "y": 211.5,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-30"
+      "seatId": "orig-41"
     },
     {
       "id": "bb1f70b0-965e-42de-96c8-c31e083c7ef8",
@@ -2474,5 +2474,5 @@
   "snapSeats": true,
   "locked": false,
   "wallThickness": 2,
-  "savedAt": 1794131106058
+  "savedAt": 1794131921306
 }
