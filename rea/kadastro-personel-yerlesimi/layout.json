@@ -200,7 +200,7 @@
     {
       "id": "d060d01a-0879-4c88-863c-b1089764f6c0",
       "name": "Hüseyin Poyraz",
-      "role": "K.Teknisyeni",
+      "role": "Taşınır",
       "color": "#17664f",
       "x": null,
       "y": null,
@@ -408,7 +408,7 @@
     {
       "id": "45a66455-a5d3-4207-917e-203f92c779fc",
       "name": "Nurettin Keleş",
-      "role": "Memur",
+      "role": "Mutemet",
       "color": "#9a651b",
       "x": null,
       "y": null,
@@ -447,7 +447,7 @@
     {
       "id": "df368b75-14f3-40d6-aa05-5f42c08c6dd0",
       "name": "Saliha Nas",
-      "role": "Sürekli İşçi",
+      "role": "Sekreter",
       "color": "#253f48",
       "x": null,
       "y": null,
@@ -2394,5 +2394,5 @@
   "snapSeats": true,
   "locked": false,
   "wallThickness": 2,
-  "savedAt": 1794130205398
+  "savedAt": 1794130268178
 }
