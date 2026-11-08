@@ -215,13 +215,13 @@
       "name": "Kenan Baydemir",
       "role": "K.Teknisyeni",
       "color": "#17664f",
-      "x": 926.5,
-      "y": 46.25,
+      "x": 733.6435562908915,
+      "y": 243.07745381845126,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-9"
+      "seatId": "3a56348e-c6ed-4111-8208-7c1ad8a2a854"
     },
     {
       "id": "37c594ee-a75b-4fe3-9e04-f8289fbd6736",
@@ -241,13 +241,13 @@
       "name": "Şehmus Öztürk",
       "role": "K.Teknisyeni",
       "color": "#17664f",
-      "x": 1070.75,
-      "y": 46.5,
+      "x": 731.3925085459522,
+      "y": 88.19555392945901,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-11"
+      "seatId": "09154340-2e5a-4bac-af40-fc09102daedb"
     },
     {
       "id": "a177a581-4cd1-4998-b4aa-4f10a4106791",
@@ -423,13 +423,13 @@
       "name": "Fatih Koçak",
       "role": "Sürekli İşçi",
       "color": "#253f48",
-      "x": 698.9161457756338,
-      "y": 305.7357530369444,
+      "x": 738.2329435304138,
+      "y": 165.0575753127433,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": null
+      "seatId": "584a6fe3-ea22-47ea-a156-d3c720d10921"
     },
     {
       "id": "b45d3c03-f1ef-4a4d-afce-908615f7413a",
@@ -1139,7 +1139,8 @@
       "h": 67.5,
       "angle": 0,
       "label": "Plandaki mobilya",
-      "asset": 61
+      "asset": 61,
+      "groupId": "3300809a-65ae-4160-b0e2-38576acfced0"
     },
     {
       "id": "orig-63",
@@ -1339,7 +1340,8 @@
       "h": 19,
       "angle": 0,
       "label": "Plandaki mobilya",
-      "asset": 79
+      "asset": 79,
+      "groupId": "3300809a-65ae-4160-b0e2-38576acfced0"
     },
     {
       "id": "orig-81",
@@ -2365,6 +2367,84 @@
       "asset": 127,
       "groupId": "29262f64-ae6d-4a7a-9c73-7d6693d9ae9b",
       "work": false
+    },
+    {
+      "id": "17cd4e7d-18aa-49b7-b13d-cf23511a973b",
+      "type": "original",
+      "x": 702.3925085459522,
+      "y": 76.44555392945901,
+      "w": 83,
+      "h": 67.5,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 61,
+      "groupId": "0a24d854-d794-4c8e-8620-4a4455e5453b",
+      "work": false
+    },
+    {
+      "id": "09154340-2e5a-4bac-af40-fc09102daedb",
+      "type": "original",
+      "x": 731.3925085459522,
+      "y": 88.19555392945901,
+      "w": 19,
+      "h": 19,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 79,
+      "groupId": "0a24d854-d794-4c8e-8620-4a4455e5453b",
+      "work": false
+    },
+    {
+      "id": "82b2140b-881f-4897-aab9-11e7252452c1",
+      "type": "original",
+      "x": 709.2329435304138,
+      "y": 153.3075753127433,
+      "w": 83,
+      "h": 67.5,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 61,
+      "groupId": "bb179c27-e0ba-4948-af66-0e13528a12c1",
+      "work": false
+    },
+    {
+      "id": "584a6fe3-ea22-47ea-a156-d3c720d10921",
+      "type": "original",
+      "x": 738.2329435304138,
+      "y": 165.0575753127433,
+      "w": 19,
+      "h": 19,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 79,
+      "groupId": "bb179c27-e0ba-4948-af66-0e13528a12c1",
+      "work": false
+    },
+    {
+      "id": "616ed172-0b26-452c-ae83-92601f294155",
+      "type": "original",
+      "x": 704.6435562908915,
+      "y": 231.32745381845126,
+      "w": 83,
+      "h": 67.5,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 61,
+      "groupId": "5ca1153f-9911-4bf7-b8db-fc3c6291da26",
+      "work": false
+    },
+    {
+      "id": "3a56348e-c6ed-4111-8208-7c1ad8a2a854",
+      "type": "original",
+      "x": 733.6435562908915,
+      "y": 243.07745381845126,
+      "w": 19,
+      "h": 19,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 79,
+      "groupId": "5ca1153f-9911-4bf7-b8db-fc3c6291da26",
+      "work": false
     }
   ],
   "masks": [],
@@ -2394,5 +2474,5 @@
   "snapSeats": true,
   "locked": false,
   "wallThickness": 2,
-  "savedAt": 1794130410410
+  "savedAt": 1794130564567
 }
