@@ -1720,12 +1720,14 @@
       "thickness": 5
     }
   ],
-  "roomNames": {},
+  "roomNames": {
+    "06": "Müd. Yrd. Odası"
+  },
   "colorPlan": false,
   "showRooms": false,
   "showRoles": false,
   "snapSeats": true,
   "locked": false,
   "wallThickness": 5,
-  "savedAt": 1793167882789
+  "savedAt": 1794128552504
 }
