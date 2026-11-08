@@ -2267,9 +2267,9 @@
   },
   "colorPlan": false,
   "showRooms": false,
-  "showRoles": false,
+  "showRoles": true,
   "snapSeats": true,
   "locked": false,
-  "wallThickness": 5,
-  "savedAt": 1794130122074
+  "wallThickness": 2,
+  "savedAt": 1794130148562
 }
