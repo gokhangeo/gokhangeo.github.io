@@ -1696,7 +1696,8 @@
       "h": 20,
       "angle": 0,
       "label": "Plandaki mobilya",
-      "asset": 121
+      "asset": 121,
+      "groupId": "4471d95b-dfbb-4cc6-9611-a98d0528657d"
     },
     {
       "id": "orig-123",
@@ -1707,7 +1708,8 @@
       "h": 20,
       "angle": 0,
       "label": "Plandaki mobilya",
-      "asset": 122
+      "asset": 122,
+      "groupId": "4471d95b-dfbb-4cc6-9611-a98d0528657d"
     },
     {
       "id": "orig-124",
@@ -1718,7 +1720,8 @@
       "h": 20,
       "angle": 0,
       "label": "Plandaki mobilya",
-      "asset": 123
+      "asset": 123,
+      "groupId": "4471d95b-dfbb-4cc6-9611-a98d0528657d"
     },
     {
       "id": "orig-125",
@@ -1729,7 +1732,8 @@
       "h": 22,
       "angle": 0,
       "label": "Plandaki mobilya",
-      "asset": 124
+      "asset": 124,
+      "groupId": "4471d95b-dfbb-4cc6-9611-a98d0528657d"
     },
     {
       "id": "orig-126",
@@ -1740,7 +1744,8 @@
       "h": 20.5,
       "angle": 0,
       "label": "Plandaki mobilya",
-      "asset": 125
+      "asset": 125,
+      "groupId": "4471d95b-dfbb-4cc6-9611-a98d0528657d"
     },
     {
       "id": "orig-127",
@@ -1751,7 +1756,8 @@
       "h": 20.5,
       "angle": 0,
       "label": "Plandaki mobilya",
-      "asset": 126
+      "asset": 126,
+      "groupId": "4471d95b-dfbb-4cc6-9611-a98d0528657d"
     },
     {
       "id": "orig-128",
@@ -1762,7 +1768,8 @@
       "h": 20.5,
       "angle": 0,
       "label": "Plandaki mobilya",
-      "asset": 127
+      "asset": 127,
+      "groupId": "4471d95b-dfbb-4cc6-9611-a98d0528657d"
     },
     {
       "id": "orig-129",
@@ -1886,39 +1893,6 @@
       "asset": 138
     },
     {
-      "id": "orig-140",
-      "type": "original",
-      "x": 1466,
-      "y": 863,
-      "w": 60,
-      "h": 78,
-      "angle": 0,
-      "label": "Plandaki mobilya",
-      "asset": 139
-    },
-    {
-      "id": "orig-141",
-      "type": "original",
-      "x": 1554.25,
-      "y": 863,
-      "w": 59.5,
-      "h": 78,
-      "angle": 0,
-      "label": "Plandaki mobilya",
-      "asset": 140
-    },
-    {
-      "id": "orig-142",
-      "type": "original",
-      "x": 1643,
-      "y": 863,
-      "w": 60,
-      "h": 78,
-      "angle": 0,
-      "label": "Plandaki mobilya",
-      "asset": 141
-    },
-    {
       "id": "orig-143",
       "type": "original",
       "x": 1166.75,
@@ -1994,39 +1968,6 @@
       "angle": 0,
       "label": "Plandaki mobilya",
       "asset": 148
-    },
-    {
-      "id": "orig-150",
-      "type": "original",
-      "x": 1467,
-      "y": 885.25,
-      "w": 25,
-      "h": 23.5,
-      "angle": 0,
-      "label": "Plandaki mobilya",
-      "asset": 149
-    },
-    {
-      "id": "orig-151",
-      "type": "original",
-      "x": 1553.25,
-      "y": 885.25,
-      "w": 24.5,
-      "h": 23.5,
-      "angle": 0,
-      "label": "Plandaki mobilya",
-      "asset": 150
-    },
-    {
-      "id": "orig-152",
-      "type": "original",
-      "x": 1642.25,
-      "y": 885.25,
-      "w": 24.5,
-      "h": 23.5,
-      "angle": 0,
-      "label": "Plandaki mobilya",
-      "asset": 151
     },
     {
       "id": "orig-153",
@@ -2242,6 +2183,188 @@
       "asset": 111,
       "groupId": "925cbb37-f2bb-4cb6-9723-2a1699f799fd",
       "work": true
+    },
+    {
+      "id": "47c8376b-cde9-4f4e-aa91-ab60868d385f",
+      "type": "original",
+      "x": 1485.0404506281875,
+      "y": 816.9167355042349,
+      "w": 21.5,
+      "h": 20,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 121,
+      "groupId": "b878e0a2-219a-411b-a277-8e45bfa5879a",
+      "work": false
+    },
+    {
+      "id": "b37effba-d59d-4f30-a417-1bceef730ca6",
+      "type": "original",
+      "x": 1510.7904506281875,
+      "y": 816.9167355042349,
+      "w": 22,
+      "h": 20,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 122,
+      "groupId": "b878e0a2-219a-411b-a277-8e45bfa5879a",
+      "work": false
+    },
+    {
+      "id": "cb7fb047-d4eb-4db0-84fa-74bf80e8313d",
+      "type": "original",
+      "x": 1534.7904506281875,
+      "y": 816.9167355042349,
+      "w": 22,
+      "h": 20,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 123,
+      "groupId": "b878e0a2-219a-411b-a277-8e45bfa5879a",
+      "work": false
+    },
+    {
+      "id": "9e230868-4eca-40d6-8a06-40d8253cf96e",
+      "type": "original",
+      "x": 1461.7904506281875,
+      "y": 847.9167355042349,
+      "w": 22,
+      "h": 22,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 124,
+      "groupId": "b878e0a2-219a-411b-a277-8e45bfa5879a",
+      "work": false
+    },
+    {
+      "id": "79d8e799-e426-4a66-8279-288af89c0c8f",
+      "type": "original",
+      "x": 1485.0404506281875,
+      "y": 877.1667355042349,
+      "w": 21.5,
+      "h": 20.5,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 125,
+      "groupId": "b878e0a2-219a-411b-a277-8e45bfa5879a",
+      "work": false
+    },
+    {
+      "id": "6c4bbbd3-f854-4b9d-b749-cde366a4c580",
+      "type": "original",
+      "x": 1510.7904506281875,
+      "y": 877.1667355042349,
+      "w": 22,
+      "h": 20.5,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 126,
+      "groupId": "b878e0a2-219a-411b-a277-8e45bfa5879a",
+      "work": false
+    },
+    {
+      "id": "e7640307-bfc1-4f5f-a247-b97ab651762a",
+      "type": "original",
+      "x": 1534.7904506281875,
+      "y": 877.1667355042349,
+      "w": 22,
+      "h": 20.5,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 127,
+      "groupId": "b878e0a2-219a-411b-a277-8e45bfa5879a",
+      "work": false
+    },
+    {
+      "id": "ba630775-7f92-4e42-9fad-6aa908765292",
+      "type": "original",
+      "x": 1582.565283988631,
+      "y": 814.6220812756505,
+      "w": 21.5,
+      "h": 20,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 121,
+      "groupId": "29262f64-ae6d-4a7a-9c73-7d6693d9ae9b",
+      "work": false
+    },
+    {
+      "id": "6c7e189e-dfe3-4f8a-838b-b682ca1a6c9c",
+      "type": "original",
+      "x": 1608.315283988631,
+      "y": 814.6220812756505,
+      "w": 22,
+      "h": 20,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 122,
+      "groupId": "29262f64-ae6d-4a7a-9c73-7d6693d9ae9b",
+      "work": false
+    },
+    {
+      "id": "b86cb023-12df-4457-9386-b9f96b9e596a",
+      "type": "original",
+      "x": 1632.315283988631,
+      "y": 814.6220812756505,
+      "w": 22,
+      "h": 20,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 123,
+      "groupId": "29262f64-ae6d-4a7a-9c73-7d6693d9ae9b",
+      "work": false
+    },
+    {
+      "id": "677c7245-bc38-4a56-b4e6-be2021095749",
+      "type": "original",
+      "x": 1559.315283988631,
+      "y": 845.6220812756505,
+      "w": 22,
+      "h": 22,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 124,
+      "groupId": "29262f64-ae6d-4a7a-9c73-7d6693d9ae9b",
+      "work": false
+    },
+    {
+      "id": "bda4c5a7-e65b-4815-af80-3521cdd3bb42",
+      "type": "original",
+      "x": 1582.565283988631,
+      "y": 874.8720812756505,
+      "w": 21.5,
+      "h": 20.5,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 125,
+      "groupId": "29262f64-ae6d-4a7a-9c73-7d6693d9ae9b",
+      "work": false
+    },
+    {
+      "id": "11576a15-0149-4b9e-8c84-07b5431346f6",
+      "type": "original",
+      "x": 1608.315283988631,
+      "y": 874.8720812756505,
+      "w": 22,
+      "h": 20.5,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 126,
+      "groupId": "29262f64-ae6d-4a7a-9c73-7d6693d9ae9b",
+      "work": false
+    },
+    {
+      "id": "c4ed2698-6750-4d84-8f13-f8131e9fbc75",
+      "type": "original",
+      "x": 1632.315283988631,
+      "y": 874.8720812756505,
+      "w": 22,
+      "h": 20.5,
+      "angle": 0,
+      "label": "Plandaki mobilya",
+      "asset": 127,
+      "groupId": "29262f64-ae6d-4a7a-9c73-7d6693d9ae9b",
+      "work": false
     }
   ],
   "masks": [],
@@ -2271,5 +2394,5 @@
   "snapSeats": true,
   "locked": false,
   "wallThickness": 2,
-  "savedAt": 1794130148562
+  "savedAt": 1794130205398
 }
