@@ -189,26 +189,26 @@
       "name": "İsmail Aklan",
       "role": "Kontrol Memuru(Fen)",
       "color": "#17664f",
-      "x": 866.75,
-      "y": 46.25,
+      "x": 808.75,
+      "y": 611.75,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-8"
+      "seatId": "orig-117"
     },
     {
       "id": "d060d01a-0879-4c88-863c-b1089764f6c0",
       "name": "Hüseyin Poyraz",
       "role": "Taşınır",
       "color": "#17664f",
-      "x": null,
-      "y": null,
+      "x": 1404.75,
+      "y": 63.75,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": null
+      "seatId": "orig-15"
     },
     {
       "id": "d07a0893-c477-4224-8825-45a8bba4ca45",
@@ -228,13 +228,13 @@
       "name": "Mustafa Gürbüz",
       "role": "K.Teknisyeni",
       "color": "#17664f",
-      "x": 1011,
+      "x": 926.5,
       "y": 46.25,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-10"
+      "seatId": "orig-9"
     },
     {
       "id": "f9f7de6d-52e0-43db-be08-eec6bbfee979",
@@ -254,39 +254,39 @@
       "name": "Engin Uğurlu",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 1141.25,
-      "y": 148.75,
+      "x": 893,
+      "y": 459.5,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-30"
+      "seatId": "orig-76"
     },
     {
       "id": "e91118c9-5f50-4558-8880-585479d5bb77",
       "name": "Ahmet Çelik",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 792.75,
-      "y": 151.75,
+      "x": 952.75,
+      "y": 459.5,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-31"
+      "seatId": "orig-77"
     },
     {
       "id": "ee764f7c-3815-4ddd-835b-ab6f2e2475ae",
       "name": "Ayşe Çakıcı Pekçetin",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 1141.25,
-      "y": 208.5,
+      "x": 952.75,
+      "y": 611.75,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-40"
+      "seatId": "orig-119"
     },
     {
       "id": "08216403-53e3-421a-9a1e-a857cc11b381",
@@ -306,26 +306,26 @@
       "name": "Dudu Poyraz",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 867,
-      "y": 320,
+      "x": 893,
+      "y": 611.75,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-53"
+      "seatId": "orig-118"
     },
     {
       "id": "535369e3-8ddd-449f-8617-4c75c27aa80c",
       "name": "Hasan İn",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 926.5,
-      "y": 320,
+      "x": 1141.25,
+      "y": 148.75,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-54"
+      "seatId": "orig-30"
     },
     {
       "id": "bb1f70b0-965e-42de-96c8-c31e083c7ef8",
@@ -333,51 +333,51 @@
       "role": "Tekniker",
       "color": "#17664f",
       "x": 1011,
-      "y": 320,
+      "y": 46.25,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-55"
+      "seatId": "orig-10"
     },
     {
       "id": "d2d54188-3b62-421f-8054-bd8d5c155008",
       "name": "Mustafa Baysal",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 1070.75,
-      "y": 320,
+      "x": 792.75,
+      "y": 151.75,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-56"
+      "seatId": "orig-31"
     },
     {
       "id": "37ac7e19-757c-4bd0-b7a3-0a1ff869e981",
       "name": "Müjde Türkmen",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 808.75,
-      "y": 459.5,
+      "x": 1141.25,
+      "y": 208.5,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-75"
+      "seatId": "orig-40"
     },
     {
       "id": "d6b8ade3-6f90-4143-96c4-6c3ba13ac35f",
       "name": "Nurhan Arslan",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 893,
-      "y": 459.5,
+      "x": 866.75,
+      "y": 46.25,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-76"
+      "seatId": "orig-8"
     },
     {
       "id": "59777960-5c53-49b6-8371-79a7adbfe836",
@@ -385,38 +385,38 @@
       "role": "Tekniker",
       "color": "#17664f",
       "x": 1131.3,
-      "y": 521.25,
+      "y": 562.55,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-84#0"
+      "seatId": "orig-84#1"
     },
     {
       "id": "a956ad9a-972d-4441-b504-7ede59b1d8dd",
       "name": "Seval Çelik",
       "role": "Tekniker",
       "color": "#17664f",
-      "x": 808.75,
-      "y": 611.75,
+      "x": 1070.75,
+      "y": 46.5,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-117"
+      "seatId": "orig-11"
     },
     {
       "id": "45a66455-a5d3-4207-917e-203f92c779fc",
       "name": "Nurettin Keleş",
       "role": "Mutemet",
       "color": "#9a651b",
-      "x": null,
-      "y": null,
+      "x": 1404.75,
+      "y": 187,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": null
+      "seatId": "orig-39"
     },
     {
       "id": "ce6da7bf-de65-4ec2-b3e6-c3aa020764d3",
@@ -437,12 +437,12 @@
       "role": "Daimi İşçi",
       "color": "#253f48",
       "x": 1131.3,
-      "y": 562.55,
+      "y": 521.25,
       "font": 7,
       "width": 52,
       "angle": 0,
       "box": false,
-      "seatId": "orig-84#1"
+      "seatId": "orig-84#0"
     },
     {
       "id": "df368b75-14f3-40d6-aa05-5f42c08c6dd0",
@@ -2474,5 +2474,5 @@
   "snapSeats": true,
   "locked": false,
   "wallThickness": 2,
-  "savedAt": 1794130708710
+  "savedAt": 1794130984978
 }
