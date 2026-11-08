@@ -2178,8 +2178,11 @@
   ],
   "roomNames": {
     "23": "Müfettiş Odası",
+    "24": "Toplantı Odası",
     "06": "Müd. Yrd. Odası",
-    "05": "Mutemet Odası"
+    "05": "Mutemet Odası",
+    "07A": "Arşiv Sorumlusu",
+    "08": "Arşiv"
   },
   "colorPlan": false,
   "showRooms": false,
@@ -2187,5 +2190,5 @@
   "snapSeats": true,
   "locked": false,
   "wallThickness": 5,
-  "savedAt": 1794129967222
+  "savedAt": 1794130014950
 }
